@@ -25,3 +25,7 @@
 .author{
     text-align: left;
 }
+
+body{
+    background-image: url("/assets/images/background.jpeg");
+}

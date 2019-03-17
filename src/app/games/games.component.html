@@ -1,3 +1,28 @@
-<p>
-  games works!
-</p>
+
+<div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-10">
+  <table *ngIf="gamesArray">
+      <!-- ADD HEADERS -->
+      <tr>
+          <th>ID</th>
+          <th>Nazwa gry</th>
+          <th>Wydawca</th>
+          <th>Opis</th>
+          <th>Tryb gry</th>
+          <th>Data wydania</th>
+      </tr>
+
+      <!-- BIND ARRAY TO TABLE -->
+      <tr *ngFor="let game of gamesArray">
+          <td>{{game.id}}</td>
+          <td>{{game.name}}</td>
+          <td>{{game.author}}</td>
+          <td>{{game.description}}</td>
+          <td>{{game.gameMode}}</td>
+          <td>{{game.releaseDate}}</td>
+      </tr>
+  </table>
+</div>
+<div class="col-md-1"></div>
+</div>
