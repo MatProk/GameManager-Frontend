@@ -1,0 +1,21 @@
+.card-footer {
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    color: white;
+  }
+  hr{
+    background-color: white;
+  }
+
+  .submitos:hover{
+      color: black;
+  }
+
+  .custom-button:hover{
+    color: black;
+    text-decoration: none;
+  }
+
+  .custom-button{
+    color: white;
+  }
