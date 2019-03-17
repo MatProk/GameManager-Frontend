@@ -1,0 +1,9 @@
+<div *ngIf="info.token; else loggedOut">
+  witaj zalogowany uzytkowniku
+</div>
+
+
+ 
+<ng-template #loggedOut>
+  <div class="center"><b>testing...</b></div>
+</ng-template>
