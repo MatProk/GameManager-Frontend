@@ -10,6 +10,8 @@ import { RegisterComponent } from './register/register.component';
 
 import { httpInterceptorProviders } from './auth/auth-interceptor';
 
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 import { AppComponent } from './app.component';
 import { GamesComponent } from './games/games.component';
 
@@ -25,7 +27,8 @@ import { GamesComponent } from './games/games.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]

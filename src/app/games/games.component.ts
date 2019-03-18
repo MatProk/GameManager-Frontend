@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { GameService } from '../services/game/game.service';
+import { TokenStorageService } from '../auth/token-storage.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-games',
@@ -6,10 +9,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./games.component.css']
 })
 export class GamesComponent implements OnInit {
+  info: any;
 
-  constructor() { }
+  constructor(private token: TokenStorageService) { }
 
   ngOnInit() {
+    this.info = {
+      token: this.token.getToken(),
+    };
   }
 
 }
