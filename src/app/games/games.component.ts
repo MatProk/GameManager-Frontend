@@ -10,25 +10,13 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class GamesComponent implements OnInit {
   info: any;
-  games;
-  gamesArray: string [];
 
-  constructor(private gameService: GameService, private token: TokenStorageService) { }
+  constructor(private token: TokenStorageService) { }
 
   ngOnInit() {
     this.info = {
       token: this.token.getToken(),
     };
-
-    this.gameService.getGames().subscribe(
-      data => {
-        this.gamesArray = data as string [];	 // FILL THE ARRAY WITH DATA.
-        console.log(data);
-      },
-      (err: HttpErrorResponse) => {
-        console.log (err.message);
-      }
-    );
   }
 
 }

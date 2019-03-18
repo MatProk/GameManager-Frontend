@@ -19,10 +19,6 @@ export class GameService {
  
   constructor(private http: HttpClient, private tokenService: TokenStorageService) { }
 
-  getGames(): Observable<any> {
-    return this.http.get(this.listGames, { headers: {'Authorization': 'Bearer ' + this.tokenService.getToken()}});
-  }
-
   addGame(game: GameExample): Observable<GameExample> {
     return this.http.post<GameExample>(this.listGames, game, this.httpOptions)
   }
