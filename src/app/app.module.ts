@@ -10,8 +10,11 @@ import { RegisterComponent } from './register/register.component';
 
 import { httpInterceptorProviders } from './auth/auth-interceptor';
 
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-
+import { BsDatepickerModule } from 'ngx-bootstrap';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { MatTableModule, MatPaginatorModule } from "@angular/material";
 import { AppComponent } from './app.component';
 import { GamesComponent } from './games/games.component';
 
@@ -28,7 +31,12 @@ import { GamesComponent } from './games/games.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    PaginationModule.forRoot(),
+    BsDatepickerModule.forRoot()
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]

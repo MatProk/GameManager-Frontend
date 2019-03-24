@@ -3,6 +3,7 @@ export class GameExample {
     author: string;
     description: string;
     gameMode: string;
+    releaseDate: Date;
     
     constructor(){}
   }

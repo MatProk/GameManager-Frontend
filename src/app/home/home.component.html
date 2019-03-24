@@ -4,7 +4,7 @@
   <br>
   <form autocomplete="off">
     <div class="row">
-      <div class="col-md-9">
+      <div class="col-md-6">
           <div style="font-weight: bold; text-align:center;" class="form-group">
               <label>Nazwa gry</label>
               <input [ngModelOptions]="{standalone: true}" [(ngModel)]="game.name" class="form-control">
@@ -15,28 +15,31 @@
           </div>
           <div style="font-weight: bold; text-align:center;" class="form-group">
               <label>Opis</label>
-              <textarea [ngModelOptions]="{standalone: true}" style="resize: none;" rows="3" [(ngModel)]="game.description" class="form-control" required></textarea>
+              <textarea [ngModelOptions]="{standalone: true}" style="resize: none;" rows="4" [(ngModel)]="game.description" class="form-control" required></textarea>
           </div>
           <div style="font-weight: bold; text-align:center;" class="form-group">
               <label>Tryb gry</label>
               <input [ngModelOptions]="{standalone: true}" [(ngModel)]="game.gameMode" class="form-control">
           </div>
+          <div style="font-weight: bold; text-align:center;" class="form-group">
+            <label>Data wydania</label>
+            <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="game.releaseDate" class="form-control" [bsConfig]="{containerClass: 'theme-blue' }" bsDatepicker>
+          </div>
       </div>
-      <div style="font-weight: bold; text-align:center;" class="col-md-3">
-          <label>Data wydania</label><br>
-          <ngb-datepicker #dp [(ngModel)]="model" [ngModelOptions]="{standalone: true}" (navigate)="date = $event.next"></ngb-datepicker>
+      <div style="font-weight: bold; text-align:center;" class="col-md-6">
+          <label>Data wydania</label><br><br><br>
+          TU bedzie lista !!!
       </div>
     </div>
 
-
     <br>
     <div class="add form-row form-group">
-      <div class="form-group col-md-4">
+      <div class="form-group col-md-5">
       </div>
-      <div class="form-group col-md-4">
-          <button style="font-weight: bold; padding:10px;" [routerLink]="home" (click)="addGame()" type="submit" class="add btn btn-info btn-block ">Dodaj grę</button>
+      <div class="form-group col-md-2">
+          <button style="font-weight: bold; padding:7px;" [routerLink]="home" (click)="addGame()" type="submit" class="add btn btn-info btn-block ">Dodaj grę</button>
       </div>
-      <div class="form-group col-md-4">
+      <div class="form-group col-md-5">
       </div>
     </div>
 

@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { GameService } from '../services/game/game.service';
 import { TokenStorageService } from '../auth/token-storage.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { MatTableDataSource, MatPaginator } from '@angular/material';
+import { DataSource } from '@angular/cdk/table';
+import { GameExample } from '../services/game/game.resource';
 
 @Component({
   selector: 'app-games',
@@ -9,14 +12,30 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./games.component.css']
 })
 export class GamesComponent implements OnInit {
-  info: any;
+  // info: any;
 
-  constructor(private token: TokenStorageService) { }
+  // constructor(private gameService: GameService, private token: TokenStorageService) { }
+
+  //   this.info = {
+  //     token: this.token.getToken(),
+  //   };
+
+
+  displayedColumns: string[] = ['id', 'name', 'author', 'releaseDate', 'show'];
+  dataSource = new MatTableDataSource();
+  searchResult;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  constructor(private gameService: GameService){}
 
   ngOnInit() {
-    this.info = {
-      token: this.token.getToken(),
-    };
-  }
+    this.gameService.getGames().subscribe (res => {
+      this.searchResult = res;
+      this.dataSource.data = this.searchResult;
+      this.dataSource = new MatTableDataSource(this.searchResult);
+      this.dataSource.paginator = this.paginator;
 
+    });
+  }
 }
+
