@@ -11,9 +11,13 @@
         </li>
         &nbsp;&nbsp;&nbsp;
         <li class="nav-item">
-          <a *ngIf="!authority" class="custom-button" routerLink="/login">Zaloguj</a>
-          <a *ngIf="token" class="custom-button" (click)="logout()" routerLink="home">Wyloguj</a>
-       </li> 
+          <a *ngIf="token" class="custom-button" routerLink="admin">Panel administratora</a>
+        </li>
+       &nbsp;&nbsp;&nbsp; 
+       <li class="nav-item">
+        <a *ngIf="!authority" class="custom-button" routerLink="/login">Zaloguj</a>
+        <a *ngIf="token" class="custom-button" (click)="logout()" routerLink="home">Wyloguj</a>
+     </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

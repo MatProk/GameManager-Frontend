@@ -9,7 +9,7 @@ import { TokenStorageService } from 'src/app/auth/token-storage.service';
 })
 export class GameService {
 
-  private listGames = 'http://localhost:8080/game';
+  private listGames = 'http://localhost:8080/games';
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -23,9 +23,16 @@ export class GameService {
     return this.http.post<GameExample>(this.listGames, game, this.httpOptions)
   }
 
+  getOneGame(gameId): Observable<GameExample> {
+    return this.http.get<GameExample>(this.listGames + '/' + gameId)
+  }
 
   getGames(): Observable<any> {
     return this.http.get(this.listGames, { headers: {'Authorization': 'Bearer ' + this.tokenService.getToken()}});
+  }
+
+  deleteGame(gameId: number){
+    return this.http.delete(this.listGames + '/' + gameId, this.httpOptions)
   }
   
 }

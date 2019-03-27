@@ -17,6 +17,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MatTableModule, MatPaginatorModule } from "@angular/material";
 import { AppComponent } from './app.component';
 import { GamesComponent } from './games/games.component';
+import { GameDetailsComponent } from './game-details/game-details.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { GamesComponent } from './games/games.component';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    GamesComponent
+    GamesComponent,
+    GameDetailsComponent,
+    AdminPanelComponent
   ],
   imports: [
     BrowserModule,

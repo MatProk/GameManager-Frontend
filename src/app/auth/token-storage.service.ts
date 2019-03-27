@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {EventEmitter, Injectable, Output } from '@angular/core';
  
 const TOKEN_KEY = 'AuthToken';
 const USERNAME_KEY = 'AuthUsername';
@@ -10,10 +10,20 @@ const EMAIL_KEY = 'AuthEmail';
 })
 export class TokenStorageService {
   private roles: Array<string> = [];
+  @Output() loggedIn: EventEmitter<any> = new EventEmitter();
   constructor() { }
  
+  static isLogged() : boolean {
+    return sessionStorage.getItem('AuthToken') != null;
+
+  }
+
   signOut() {
     window.sessionStorage.clear();
+  }
+
+  loginOut() {
+    return this.loggedIn.emit(false)
   }
  
   public saveToken(token: string) {

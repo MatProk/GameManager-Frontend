@@ -9,27 +9,10 @@ import { GameExample } from '../services/game/game.resource';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  info: any;
-  game = new GameExample();
 
-  constructor(private token: TokenStorageService, private gameService: GameService) { }
+  constructor() { }
  
   ngOnInit() {
-    this.info = {
-      token: this.token.getToken(),
-    };
-  }
-
-  addGame(){
-    console.log(this.game);
-    this.gameService.addGame(this.game).subscribe(res => {
-    })
-    this.game.name = "";
-    this.game.author = "";
-    this.game.description = "";
-    this.game.gameMode = "";
-    this.game.releaseDate = null;
-
   }
 
 }
