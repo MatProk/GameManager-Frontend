@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { TokenStorageService } from './auth/token-storage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,7 @@ export class AppComponent {
   private authority: string;
   token;
  
-  constructor(private tokenStorage: TokenStorageService) { }
+  constructor(private router: Router, private tokenStorage: TokenStorageService) { }
  
   ngOnInit() {
     this.token = this.tokenStorage.getToken();

@@ -12,14 +12,6 @@ import { GameExample } from '../services/game/game.resource';
   styleUrls: ['./games.component.css']
 })
 export class GamesComponent implements OnInit {
-  // info: any;
-
-  // constructor(private gameService: GameService, private token: TokenStorageService) { }
-
-  //   this.info = {
-  //     token: this.token.getToken(),
-  //   };
-
 
   displayedColumns: string[] = ['id', 'name', 'author', 'releaseDate', 'show'];
   dataSource = new MatTableDataSource();
