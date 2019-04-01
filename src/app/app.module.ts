@@ -19,6 +19,7 @@ import { AppComponent } from './app.component';
 import { GamesComponent } from './games/games.component';
 import { GameDetailsComponent } from './game-details/game-details.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { TestComponent } from './test/test.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
     HomeComponent,
     GamesComponent,
     GameDetailsComponent,
-    AdminPanelComponent
+    AdminPanelComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,

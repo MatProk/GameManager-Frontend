@@ -4,6 +4,7 @@ export class GameExample {
     description: string;
     gameMode: string;
     releaseDate: Date;
+    payload: string;
     
     constructor(){}
   }
