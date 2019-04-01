@@ -88,4 +88,26 @@ export class AdminPanelComponent implements OnInit {
     }
     )
   }
+
+  private imageSrc: string = '';
+
+  handleInputChange(e) {
+    var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
+    var pattern = /image-*/;
+    var reader = new FileReader();
+    if (!file.type.match(pattern)) {
+      alert('invalid format');
+      return;
+    }
+    reader.onload = this._handleReaderLoaded.bind(this);
+    reader.readAsDataURL(file);
+  }
+  
+  _handleReaderLoaded(e) {
+    let reader = e.target;
+    this.imageSrc = reader.result;
+    console.log(reader);
+    console.log(this.imageSrc)
+    this.game.payload = this.imageSrc;
+  }
 }

@@ -4,25 +4,29 @@
     <div class="row">
       <div class="col-md-6">
           <div style="font-weight: bold; text-align:center;" class="form-group">
-              <label>Nazwa gry</label>
+              <label>Nazwa gry *</label>
               <input [ngModelOptions]="{standalone: true}" [(ngModel)]="game.name" class="form-control">
           </div>
           <div style="font-weight: bold; text-align:center;" class="form-group">
-              <label>Wydawca</label>
+              <label>Wydawca *</label>
               <input [ngModelOptions]="{standalone: true}" [(ngModel)]="game.author" class="form-control">
           </div>
           <div style="font-weight: bold; text-align:center;" class="form-group">
-              <label>Opis</label>
+              <label>Opis *</label>
               <textarea [ngModelOptions]="{standalone: true}" style="resize: none;" rows="4" [(ngModel)]="game.description" class="form-control" required></textarea>
           </div>
           <div style="font-weight: bold; text-align:center;" class="form-group">
-              <label>Tryb gry</label>
+              <label>Tryb gry *</label>
               <input [ngModelOptions]="{standalone: true}" [(ngModel)]="game.gameMode" class="form-control">
           </div>
           <div style="font-weight: bold; text-align:center;" class="form-group">
-            <label>Data wydania</label>
+            <label>Data wydania *</label>
             <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="game.releaseDate" class="form-control" [bsConfig]="{containerClass: 'theme-blue' }" bsDatepicker>
           </div>
+          <div style="font-weight: bold; text-align:center;" class="form-group">
+              <label>Zdjęcie</label><br>
+              <input style="text-align:center;" name="imageUrl" type="file" accept="image/*" (change)="handleInputChange($event)" />     
+          </div> 
           <br>
           <div class="add form-row form-group">
               <div class="form-group col-md-4">
@@ -57,10 +61,10 @@
                 </ng-container>
              
                 <ng-container matColumnDef="show">
-                      <th mat-header-cell style="text-align: center;" *matHeaderCellDef> Wyświetl </th>
+                      <th mat-header-cell style="text-align: center;" *matHeaderCellDef> Modyfikuj </th>
                       <td mat-cell style="text-align: center;" *matCellDef="let game">
-                        <button class="btn btn-danger" (click)="deleteGame(game.id)"> Usuń</button>&nbsp;  
-                        <button class="btn btn-warning" (click)="editGame()"> Edytuj</button>
+                        <button style="padding: 3px;" class="btn btn-danger" (click)="deleteGame(game.id)"> Usuń</button>&nbsp;  
+                        <button style="padding: 3px;" class="btn btn-warning" (click)="editGame()"> Edytuj</button>
                       </td>
                 </ng-container>
           

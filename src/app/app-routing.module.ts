@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { GamesComponent } from './games/games.component';
 import { GameDetailsComponent } from './game-details/game-details.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { TestComponent } from './test/test.component';
  
 const routes: Routes = [
 
@@ -18,6 +19,10 @@ const routes: Routes = [
     {
         path: 'login',
         component: LoginComponent
+    },
+    {
+        path: 'test',
+        component: TestComponent
     },
     {
         path: 'signup',
