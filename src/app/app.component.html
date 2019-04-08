@@ -1,11 +1,11 @@
-  <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+  <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" style="font-size: 27px; color: white;" routerLink="home">Game Manager</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
         <li class="nav-item">
           <a class="custom-button" routerLink="games">Lista gier</a>
         </li>
@@ -19,10 +19,28 @@
         <a *ngIf="token" class="custom-button" (click)="logout()" routerLink="home">Wyloguj</a>
      </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="submitos btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-      </form>
+    </div>
+  </nav> -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" style="font-size: 27px; color: white;" routerLink="home">Game Manager</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="games">Lista gier</a>
+        </li>
+        <li class="nav-item">
+          <a *ngIf="token" class="nav-link" routerLink="admin">Panel administratora</a>
+        </li>
+        <li class="nav-item">
+          <a *ngIf="!authority" class="nav-link" routerLink="/login">Zaloguj</a>
+        </li>
+        <li class="nav-item">
+          <a *ngIf="token" class="nav-link" (click)="logout()" routerLink="home">Wyloguj</a>
+        </li>
+      </ul>
     </div>
   </nav>
   <div class="container">

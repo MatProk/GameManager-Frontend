@@ -23,8 +23,8 @@ export class GameService {
     return this.http.post<GameExample>(this.listGames, game, this.httpOptions)
   }
 
-  getOneGame(gameId): Observable<GameExample> {
-    return this.http.get<GameExample>(this.listGames + '/' + gameId)
+  getOneGame(gameId: number): Observable<GameExample> {
+    return this.http.get<GameExample>(this.listGames + '/' + gameId, this.httpOptions)
   }
 
   getGames(): Observable<any> {
@@ -34,5 +34,10 @@ export class GameService {
   deleteGame(gameId: number){
     return this.http.delete(this.listGames + '/' + gameId, this.httpOptions)
   }
+
+  updateGame(gameId: number, game: GameExample): Observable<GameExample>{
+    return this.http.put<GameExample>(this.listGames + '/' + gameId, game, this.httpOptions)
+  }
+  
   
 }
