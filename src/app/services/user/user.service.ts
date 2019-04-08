@@ -8,12 +8,12 @@ import { TokenStorageService } from '../../auth/token-storage.service';
 })
 export class UserService {
 
-  private userProf = 'http://localhost:8080/profile';
+  private userInfo = 'http://localhost:8080/profile';
  
   constructor(private http: HttpClient, private tokenService: TokenStorageService) { }
 
   getUser(): Observable<any> {
-    return this.http.get(this.userProf, { headers: {'Authorization': 'Bearer ' + this.tokenService.getToken()}});
+    return this.http.get(this.userInfo, { headers: {'Authorization': 'Bearer ' + this.tokenService.getToken()}});
   }
 
 

@@ -21,9 +21,9 @@
           </div>
           <div style="font-weight: bold; text-align:center;" class="form-group">
             <label>Data wydania *</label>
-            <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="game.releaseDate" class="form-control" [bsConfig]="{containerClass: 'theme-blue' }" bsDatepicker>
+            <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="game.releaseDate" class="form-control" [bsConfig]="{containerClass: 'theme-blue' , dateInputFormat: 'YYYY-MM-DD'  }" bsDatepicker>
           </div>
-          <div style="font-weight: bold; text-align:center;" class="form-group">
+          <div *ngIf="!isEditing" style="font-weight: bold; text-align:center;" class="form-group">
               <label>Zdjęcie</label><br>
               <input style="text-align:center;" name="imageUrl" type="file" accept="image/*" (change)="handleInputChange($event)" />     
           </div> 
@@ -32,7 +32,8 @@
               <div class="form-group col-md-4">
               </div>
               <div class="form-group col-md-4">
-                  <button style="font-weight: bold; padding:7px;" [routerLink]="home" (click)="addGame()" type="submit" class="add btn btn-info btn-block ">Dodaj grę</button>
+                  <button *ngIf="!isEditing" style="font-weight: bold; padding:7px;" [routerLink]="home" (click)="addGame()" type="submit" class="add btn btn-info btn-block ">Dodaj grę</button>
+                  <button *ngIf="isEditing" style="font-weight: bold; padding:7px;" [routerLink]="home" (click)="updateGame(game.id, game)" type="submit" class="add btn btn-info btn-block ">Zaktualizuj grę</button>
               </div>
               <div class="form-group col-md-4">
               </div>
@@ -63,8 +64,10 @@
                 <ng-container matColumnDef="show">
                       <th mat-header-cell style="text-align: center;" *matHeaderCellDef> Modyfikuj </th>
                       <td mat-cell style="text-align: center;" *matCellDef="let game">
-                        <button style="padding: 3px;" class="btn btn-danger" (click)="deleteGame(game.id)"> Usuń</button>&nbsp;  
-                        <button style="padding: 3px;" class="btn btn-warning" (click)="editGame()"> Edytuj</button>
+                        <button style="margin-left: 5px;" *ngIf="!isEditing" style="padding: 3px;" class="btn btn-danger" (click)="deleteGame(game.id)">Usuń</button>&nbsp;
+                        <button style="margin-left: 5px;" *ngIf="isEditing" style="padding: 3px;" class="btn btn-danger" disabled (click)="deleteGame(game.id)">Usuń</button>&nbsp;
+                        <button style="margin-left: 5px;" *ngIf="!isEditing" style="padding: 3px;" class="btn btn-warning" (click)="startEdit(game.id)">Edytuj</button>
+                        <button style="margin-left: 5px;" *ngIf="isEditing" style="padding: 3px;" disabled class="btn btn-warning" (click)="startEdit(game.id)">Edytuj</button>
                       </td>
                 </ng-container>
           
@@ -80,7 +83,7 @@
   </form>
   <div style="margin-top: 50px;font-size: 35px; font-weight: bold; text-align:center;">Raport</div>
   <br>
-  <div class="add form-row form-group">
+  <div style="margin-bottom: 100px;" class="add form-row form-group">
       <div class="form-group col-md-4">
       </div>
       <div class="form-group col-md-4">

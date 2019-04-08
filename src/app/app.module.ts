@@ -20,6 +20,8 @@ import { GamesComponent } from './games/games.component';
 import { GameDetailsComponent } from './game-details/game-details.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { TestComponent } from './test/test.component';
+import { ToastrModule } from 'ngx-toastr'
+
 
 @NgModule({
   declarations: [
@@ -39,6 +41,9 @@ import { TestComponent } from './test/test.component';
     HttpClientModule,
     NgbModule,
     BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 5000
+    }),
     MatTableModule,
     MatPaginatorModule,
     PaginationModule.forRoot(),

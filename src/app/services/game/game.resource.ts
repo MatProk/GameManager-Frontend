@@ -1,4 +1,5 @@
 export class GameExample {
+    id: number;
     name: string;
     author: string;
     description: string;
