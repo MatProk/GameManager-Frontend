@@ -8,6 +8,7 @@ import { MatTableDataSource, MatPaginator } from '@angular/material';
 import { UserService } from '../services/user/user.service';
 import { isInteger } from '@ng-bootstrap/ng-bootstrap/util/util';
 import { ToastrService } from 'ngx-toastr';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-admin-panel',
@@ -24,16 +25,18 @@ export class AdminPanelComponent implements OnInit {
   data;
   isEditing = false;
 
+  registerForm: FormGroup;
+  submitted = false;
+
   displayedColumns: string[] = ['id', 'name', 'author', 'show'];
   dataSource = new MatTableDataSource();
   searchResult;
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  constructor(private toastr: ToastrService, private http: HttpClient, private token: TokenStorageService, private gameService: GameService, private profile: UserService) { }
+  constructor(private formBuilder: FormBuilder, private toastr: ToastrService, private http: HttpClient, private token: TokenStorageService, private gameService: GameService, private profile: UserService) { }
  
   ngOnInit() {
     this.profile.getUser().subscribe(data =>{
       this.userInfo = data;
-      console.log(this.userInfo)
     })
     this.gameService.getGames().subscribe(data =>{
       this.arrGames = data as string [];
@@ -50,9 +53,23 @@ export class AdminPanelComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
 
     });
-  }
+
+    this.registerForm = this.formBuilder.group({
+      nameControl: ['', Validators.required],
+      authorControl: ['', Validators.required],
+      descriptionControl: ['', [Validators.required]],
+      gameModeControl: ['', [Validators.required]],
+      releaseDateControl: ['', Validators.required],
+  });
+ }
+
+ get f() { return this.registerForm.controls; }
 
   addGame(){
+    this.submitted = true;
+    if(this.registerForm.invalid){
+      return;
+    }
     console.log(this.game);
     this.gameService.addGame(this.game).subscribe(res => {
       this.game.name = "";
@@ -69,7 +86,7 @@ export class AdminPanelComponent implements OnInit {
   
       });
     })
-    
+    this.submitted = false;
   }
 
   download() {

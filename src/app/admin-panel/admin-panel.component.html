@@ -1,27 +1,42 @@
 <div *ngIf="info.token; else loggedOut">
   <br><br>
-  <form autocomplete="off">
+  <form autocomplete="off" [formGroup]="registerForm" (ngSubmit)="addGame()">
     <div class="row">
       <div class="col-md-6">
           <div style="font-weight: bold; text-align:center;" class="form-group">
               <label>Nazwa gry *</label>
-              <input [ngModelOptions]="{standalone: true}" [(ngModel)]="game.name" class="form-control">
+              <input formControlName="nameControl" [ngClass]="{ 'is-invalid': submitted && f.nameControl.errors }" [(ngModel)]="game.name" class="form-control">
+              <div *ngIf="submitted && f.nameControl.errors" class="invalid-feedback">
+                <div *ngIf="f.nameControl.errors.required">Nazwa gry wymagana!</div>
+              </div>
           </div>
           <div style="font-weight: bold; text-align:center;" class="form-group">
               <label>Wydawca *</label>
-              <input [ngModelOptions]="{standalone: true}" [(ngModel)]="game.author" class="form-control">
+              <input formControlName="authorControl" [ngClass]="{ 'is-invalid': submitted && f.authorControl.errors }" [(ngModel)]="game.author" class="form-control">
+              <div *ngIf="submitted && f.authorControl.errors" class="invalid-feedback">
+                <div *ngIf="f.authorControl.errors.required">Wydawca gry jest wymagany!</div>
+              </div>
           </div>
           <div style="font-weight: bold; text-align:center;" class="form-group">
               <label>Opis *</label>
-              <textarea [ngModelOptions]="{standalone: true}" style="resize: none;" rows="4" [(ngModel)]="game.description" class="form-control" required></textarea>
+              <textarea formControlName="descriptionControl" [ngClass]="{ 'is-invalid': submitted && f.descriptionControl.errors }" style="resize: none;" rows="4" [(ngModel)]="game.description" class="form-control" required></textarea>
+              <div *ngIf="submitted && f.descriptionControl.errors" class="invalid-feedback">
+                <div *ngIf="f.descriptionControl.errors.required">Opis gry jest wymagany!</div>
+              </div>
           </div>
           <div style="font-weight: bold; text-align:center;" class="form-group">
               <label>Tryb gry *</label>
-              <input [ngModelOptions]="{standalone: true}" [(ngModel)]="game.gameMode" class="form-control">
+              <input formControlName="gameModeControl" [ngClass]="{ 'is-invalid': submitted && f.gameModeControl.errors }" [(ngModel)]="game.gameMode" class="form-control">
+              <div *ngIf="submitted && f.gameModeControl.errors" class="invalid-feedback">
+                <div *ngIf="f.gameModeControl.errors.required">Tryb gry jest wymagany</div>
+              </div>
           </div>
           <div style="font-weight: bold; text-align:center;" class="form-group">
             <label>Data wydania *</label>
-            <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="game.releaseDate" class="form-control" [bsConfig]="{containerClass: 'theme-blue' , dateInputFormat: 'YYYY-MM-DD'  }" bsDatepicker>
+            <input type="text" formControlName="releaseDateControl" [ngClass]="{ 'is-invalid': submitted && f.releaseDateControl.errors }" [(ngModel)]="game.releaseDate" class="form-control" [bsConfig]="{containerClass: 'theme-blue' , dateInputFormat: 'YYYY-MM-DD'  }" bsDatepicker>
+            <div *ngIf="submitted && f.releaseDateControl.errors" class="invalid-feedback">
+              <div *ngIf="f.releaseDateControl.errors.required">Data wydania gry jest wymagana</div>
+            </div>
           </div>
           <div *ngIf="!isEditing" style="font-weight: bold; text-align:center;" class="form-group">
               <label>Zdjęcie</label><br>
@@ -32,7 +47,7 @@
               <div class="form-group col-md-4">
               </div>
               <div class="form-group col-md-4">
-                  <button *ngIf="!isEditing" style="font-weight: bold; padding:7px;" [routerLink]="home" (click)="addGame()" type="submit" class="add btn btn-info btn-block ">Dodaj grę</button>
+                  <button *ngIf="!isEditing" style="font-weight: bold; padding:7px;" [routerLink]="home" type="submit" class="add btn btn-info btn-block ">Dodaj grę</button>
                   <button *ngIf="isEditing" style="font-weight: bold; padding:7px;" [routerLink]="home" (click)="updateGame(game.id, game)" type="submit" class="add btn btn-info btn-block ">Zaktualizuj grę</button>
               </div>
               <div class="form-group col-md-4">
