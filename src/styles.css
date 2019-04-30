@@ -3,4 +3,5 @@
 body {
     /* background-image: url("/assets/images/back.jpg"); */
     background-color: lightgray;
+    overflow: hidden;
   }

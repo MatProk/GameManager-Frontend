@@ -26,7 +26,6 @@ export class GamesComponent implements OnInit {
       this.dataSource.data = this.searchResult;
       this.dataSource = new MatTableDataSource(this.searchResult);
       this.dataSource.paginator = this.paginator;
-
     });
   }
 }
